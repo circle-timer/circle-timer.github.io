@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>개인정보처리방침 (Privacy Policy) - Circle Timer</title>
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --accent: #38bdf8;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding-bottom: 60px;
+    }
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+    .brand img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+    .lang-switcher {
+      display: flex;
+      gap: 8px;
+    }
+    .lang-btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .lang-btn.active, .lang-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .hero-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .hero-title h1 {
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .hero-title p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    h2 {
+      font-size: 1.35rem;
+      color: var(--accent);
+      margin-top: 24px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    h2:first-of-type {
+      margin-top: 0;
+    }
+    p, ul, ol {
+      margin-bottom: 16px;
+      color: #cbd5e1;
+    }
+    ul, ol {
+      padding-left: 24px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    strong {
+      color: #fff;
+    }
+    .highlight-box {
+      background: rgba(56, 189, 248, 0.08);
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+    }
+    .highlight-box p {
+      margin-bottom: 0;
+      color: #e0f2fe;
+    }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="brand">
+        <img src="assets/icon.png" alt="Circle Timer Logo">
+        <span>Circle Timer</span>
+      </a>
+      <div class="lang-switcher">
+        <button id="btn-ko" class="lang-btn active" onclick="switchLang('ko')">한국어</button>
+        <button id="btn-en" class="lang-btn" onclick="switchLang('en')">English</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-title">
+      <h1 id="title-text">개인정보처리방침 (Privacy Policy)</h1>
+      <p id="date-text">최종 수정일 (Effective Date): 2026년 9월 17일</p>
+    </div>
+
+    <!-- 한국어 섹션 -->
+    <div id="section-ko" class="card">
+      <span class="badge">Google Play 정책 및 개인정보보호법 준수</span>
+      <p>'Circle Timer' (이하 '앱' 또는 '서비스')는 이용자의 개인정보 및 프라이버시를 매우 소중하게 생각하며, 대한민국의 「개인정보 보호법」 및 Google Play의 「사용자 데이터 정책(User Data Policy)」 등 관련 법령과 가이드라인을 엄격히 준수합니다. 본 방침은 앱이 어떠한 정보를 다루며 어떻게 보호하는지 상세히 안내합니다.</p>
+
+      <h2>1. 개인정보 및 권한의 처리 목적과 범위</h2>
+      <p>본 앱은 '시간 저축 기반의 타이머 충전' 및 '사용자가 지정한 목표 앱 사용 시간 제어/차단'이라는 핵심 기능을 제공하기 위해 아래의 단말기 권한 및 데이터에 접근합니다:</p>
+      <ul>
+        <li><strong>설치된 애플리케이션 목록 (<code>QUERY_ALL_PACKAGES</code>)</strong>: 이용자가 사용 시간을 제한하고 차단하고자 하는 대상 앱을 직접 목록에서 선택 및 등록할 수 있도록 기기에 설치된 앱 정보를 로컬에서 표시합니다.</li>
+        <li><strong>사용 정보 접근 권한 (<code>PACKAGE_USAGE_STATS</code>)</strong>: 이용자가 등록한 차단 대상 앱이 현재 화면(Foreground)에서 실행 중인지 실시간으로 감지하여, 적립된 시간을 정확히 차감하고 만료 시 차단하기 위해 사용됩니다.</li>
+        <li><strong>다른 앱 위에 표시 권한 (<code>SYSTEM_ALERT_WINDOW</code>)</strong>: 적립된 잔여 시간이 0초로 소진되었을 때, 해당 차단 앱 위에 안전한 차단 오버레이 다이얼로그를 표시하여 추가 사용을 방지합니다.</li>
+        <li><strong>알림 권한 (<code>POST_NOTIFICATIONS</code>)</strong>: 백그라운드 타이머 작동 상태를 상태바에 실시간 표시하고, 잔여 시간 만료 1분 전 경고 햅틱/알림을 전송합니다.</li>
+        <li><strong>배터리 최적화 제외 (<code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code>)</strong>: 스마트폰의 절전 모드로 인해 백그라운드 타이머 및 앱 감지 서비스가 비정상적으로 종료되는 현상을 방지합니다.</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>★ 핵심 보안 원칙: 완전한 온디바이스(On-Device) 로컬 처리</strong><br>
+        본 앱이 접근하는 모든 앱 사용 기록, 패키지 정보, 타이머 잔액 데이터는 <strong>이용자의 기기 내부(Local Device Storage)에서만 안전하게 처리</strong>됩니다. 자체 서버나 외부 클라우드로 어떠한 개인 식별 정보나 앱 사용 로그도 전송, 수집, 저장하지 않습니다.</p>
+      </div>
+
+      <h2>2. 제3자 제공 및 위탁</h2>
+      <p>본 앱은 이용자의 개인정보를 제3자에게 판매, 대여, 공유하거나 외부 업체에 처리를 위탁하지 않습니다. 또한 이용자의 행태를 추적하거나 프로파일링하는 서드파티 분석 툴 및 광고 네트워크 SDK를 일체 탑재하지 않습니다.</p>
+
+      <h2>3. 개인정보의 보유 및 파기</h2>
+      <p>앱에서 사용하는 모든 설정 값(차단 앱 목록, 시간 잔액)은 이용자의 단말기 내부 저장소에만 보관됩니다. 이용자가 스마트폰에서 <strong>앱을 삭제(제거)하거나 '데이터 삭제'를 실행할 경우, 기기 내에 저장된 모든 데이터는 즉시 복구 불가능하게 영구 파기</strong>됩니다.</p>
+
+      <h2>4. 아동의 개인정보 보호 (COPPA 준수)</h2>
+      <p>본 앱은 만 13세 미만(또는 관할 지역의 법정 연령 미만)의 아동을 대상으로 하지 않으며, 아동으로부터 의도적으로 어떠한 개인 식별 정보도 수집하지 않습니다.</p>
+
+      <h2>5. 문의처</h2>
+      <p>본 개인정보처리방침 또는 앱의 데이터 처리에 관하여 질문, 의견이 있으신 경우 아래 공식 연락처로 문의해 주시기 바랍니다:</p>
+      <ul>
+        <li><strong>서비스명</strong>: Circle Timer</li>
+        <li><strong>공식 문의 이메일</strong>: <a href="mailto:support@circletimer.app" style="color:var(--accent);">support@circletimer.app</a></li>
+      </ul>
+    </div>
+
+    <!-- English Section -->
+    <div id="section-en" class="card" style="display: none;">
+      <span class="badge">Google Play Policy & COPPA Compliant</span>
+      <p>Circle Timer (the "App") values user privacy and adheres strictly to applicable data protection regulations and the Google Play User Data Policy. This Privacy Policy details how we handle permissions and data within the App.</p>
+
+      <h2>1. Information and Permissions We Access</h2>
+      <p>The App accesses specific device capabilities strictly to fulfill its core functionality: time-banking productivity timers and user-defined app usage moderation:</p>
+      <ul>
+        <li><strong>Installed Applications (<code>QUERY_ALL_PACKAGES</code>)</strong>: Displays installed applications locally so users can deliberately select and register which apps they wish to monitor and block.</li>
+        <li><strong>Usage Access (<code>PACKAGE_USAGE_STATS</code>)</strong>: Detects in real-time when a user-managed target app enters the foreground, enabling second-by-second time deduction and triggering blocking upon expiration.</li>
+        <li><strong>Display Over Other Apps (<code>SYSTEM_ALERT_WINDOW</code>)</strong>: Renders a protective overlay blocking dialog on top of managed apps when remaining banked time reaches zero.</li>
+        <li><strong>Notifications (<code>POST_NOTIFICATIONS</code>)</strong>: Displays ongoing foreground timer status in the system notification bar and alerts the user 1 minute prior to expiration.</li>
+        <li><strong>Battery Optimization Exemption (<code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code>)</strong>: Prevents operating system battery savers from prematurely stopping background timer monitoring.</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>★ Absolute On-Device Processing Principle</strong><br>
+        All application usage metrics, package names, and banked second counters are <strong>processed and stored 100% locally on your device</strong>. The App does NOT transmit, collect, or store any personal data or usage logs to any external server or cloud service.</p>
+      </div>
+
+      <h2>2. Third-Party Sharing and Tracking</h2>
+      <p>The App does not sell, rent, license, or share any user data with third parties. No third-party behavioral analytics, trackers, or advertising networks are integrated into the App.</p>
+
+      <h2>3. Data Retention and Deletion</h2>
+      <p>All user configurations reside strictly within the device's protected app sandbox. When the user uninstalls the App or clears app data through Android system settings, all stored data is <strong>immediately and permanently erased</strong>.</p>
+
+      <h2>4. Children's Privacy (COPPA Compliance)</h2>
+      <p>The App is not directed to children under 13 years of age, and we do not knowingly collect personal data from children.</p>
+
+      <h2>5. Contact Information</h2>
+      <p>If you have any questions or feedback regarding this Privacy Policy, please reach out to:</p>
+      <ul>
+        <li><strong>Service</strong>: Circle Timer</li>
+        <li><strong>Official Support Email</strong>: <a href="mailto:support@circletimer.app" style="color:var(--accent);">support@circletimer.app</a></li>
+      </ul>
+    </div>
+
+    <footer>
+      <p><a href="index.html">← Circle Timer 홈으로 이동 (Home)</a></p>
+      <p style="margin-top: 10px;">&copy; 2026 Circle Timer. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function switchLang(lang) {
+      const koSec = document.getElementById('section-ko');
+      const enSec = document.getElementById('section-en');
+      const btnKo = document.getElementById('btn-ko');
+      const btnEn = document.getElementById('btn-en');
+      const titleText = document.getElementById('title-text');
+      const dateText = document.getElementById('date-text');
+
+      if (lang === 'en') {
+        koSec.style.display = 'none';
+        enSec.style.display = 'block';
+        btnKo.classList.remove('active');
+        btnEn.classList.add('active');
+        titleText.textContent = 'Privacy Policy';
+        dateText.textContent = 'Effective Date: September 17, 2026';
+      } else {
+        koSec.style.display = 'block';
+        enSec.style.display = 'none';
+        btnEn.classList.remove('active');
+        btnKo.classList.add('active');
+        titleText.textContent = '개인정보처리방침 (Privacy Policy)';
+        dateText.textContent = '최종 수정일 (Effective Date): 2026년 9월 17일';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle Timer - 집중한 만큼 즐기는 스마트한 시간 저축 타이머</title>
+  <meta name="description" content="공부와 업무에 집중한 시간을 저축하고, 유튜브/인스타 등 관리 대상 앱의 사용 시간을 스스로 조절하는 온디바이스 디지털 웰빙 타이머">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-hover: #059669;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --gradient: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background-color: rgba(30, 41, 59, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 0;
+    }
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #fff;
+    }
+    .btn-privacy {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent) !important;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 6px 14px;
+      border-radius: 6px;
+    }
+    .btn-privacy:hover {
+      background: rgba(56, 189, 248, 0.2);
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 1100px;
+      margin: 60px auto 40px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--primary);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 36px;
+    }
+    .badge-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #000;
+      border: 1px solid #475569;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .store-badge span {
+      display: block;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      font-weight: 400;
+      text-align: left;
+    }
+
+    /* Screenshots Showcase */
+    .screenshots-section {
+      max-width: 1100px;
+      margin: 20px auto 80px;
+      padding: 0 24px;
+    }
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+    .phone-mockup {
+      background: #1e293b;
+      border-radius: 24px;
+      padding: 10px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+    .phone-mockup:hover {
+      transform: translateY(-8px);
+    }
+    .phone-mockup img {
+      width: 100%;
+      max-width: 240px;
+      border-radius: 16px;
+      display: block;
+    }
+    .mockup-caption {
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    /* Features */
+    .features {
+      background-color: #162032;
+      padding: 80px 24px;
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .features-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .section-header h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .section-header p {
+      color: var(--text-muted);
+    }
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: border-color 0.2s;
+    }
+    .feature-card:hover {
+      border-color: var(--primary);
+    }
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Security Highlight */
+    .security-banner {
+      max-width: 1100px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+    .security-box {
+      background: linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(56,189,248,0.1) 100%);
+      border: 1px solid rgba(16,185,129,0.3);
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .security-content {
+      max-width: 650px;
+    }
+    .security-content h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .security-content p {
+      color: #cbd5e1;
+      font-size: 1rem;
+    }
+    .security-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sec-tag {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--card-border);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Footer */
+    footer {
+      background: #090e1a;
+      border-top: 1px solid var(--card-border);
+      padding: 50px 24px 30px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    .footer-brand h4 {
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    .copyright {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(51, 65, 85, 0.5);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <img src="assets/icon.png" alt="Circle Timer Logo">
+        <span>Circle Timer</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">주요 기능</a>
+        <a href="#screenshots">스크린샷</a>
+        <a href="privacy.html" class="btn-privacy">개인정보처리방침</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="pill">
+      <span>✨</span> 온디바이스 스마트 스크린타임 웰빙 타이머
+    </div>
+    <h1>집중한 만큼 즐기는<br>스마트한 시간 관리, Circle Timer</h1>
+    <p>공부나 업무에 몰입한 시간을 스톱워치로 모아 저축하고,<br>유튜브, SNS 등 관리 대상 앱의 사용 시간을 스스로 통제하세요.</p>
+    
+    <div class="badge-group">
+      <div class="store-badge">
+        <span>Google Play</span>
+        <strong>출시 준비 중 (Coming Soon)</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section id="screenshots" class="screenshots-section">
+    <div class="screenshots-grid">
+      <div class="phone-mockup">
+        <img src="assets/01_stopwatch_bank.png" alt="스톱워치 시간 저축">
+        <div class="mockup-caption">⏱️ 몰입 시간 저축</div>
+      </div>
+      <div class="phone-mockup">
+        <img src="assets/02_rainbow_dial.png" alt="레인보우 원형 다이얼">
+        <div class="mockup-caption">🌈 직관적인 원형 다이얼</div>
+      </div>
+      <div class="phone-mockup">
+        <img src="assets/03_managed_apps.png" alt="관리 대상 앱 지정">
+        <div class="mockup-caption">📱 차단 대상 앱 선택</div>
+      </div>
+      <div class="phone-mockup">
+        <img src="assets/04_block_overlay.png" alt="오버레이 안전 차단">
+        <div class="mockup-caption">🛡️ 0초 만료 시 안전 차단</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="features">
+    <div class="features-container">
+      <div class="section-header">
+        <h2>왜 Circle Timer인가요?</h2>
+        <p>의지력에만 기대지 않는 능동적이고 직관적인 시간 보상 시스템</p>
+      </div>
+
+      <div class="feature-cards">
+        <div class="feature-card">
+          <div class="feature-icon">⏱️</div>
+          <h3>시간 저축 (Time Banking)</h3>
+          <p>공부, 독서, 업무에 집중한 시간을 스톱워치로 기록하여 시간 은행에 저축합니다. 스스로 번 시간만큼 즐기므로 죄책감 없는 자유 시간을 보장합니다.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>실시간 차감 & 오버레이 차단</h3>
+          <p>유튜브나 인스타그램 등 관리 대상 앱을 실행하면 저축된 시간이 초 단위로 차감되며, 시간이 소진되면 부드럽고 안전한 오버레이로 앱을 차단합니다.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>배터리 방전 걱정 제로</h3>
+          <p>초경량 포그라운드 모니터링 엔진으로 삼성, 샤오미 등 제조사의 배터리 절전 모드 속에서도 꺼지지 않고 정확하게 작동합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security Banner -->
+  <section class="security-banner">
+    <div class="security-box">
+      <div class="security-content">
+        <h3>🔒 100% 온디바이스(On-Device) 로컬 보안</h3>
+        <p>Circle Timer는 사용자의 어떤 개인 데이터나 앱 사용 기록도 외부 서버로 전송하지 않습니다. 모든 데이터는 오직 사용자의 스마트폰 내부에서만 안전하게 처리됩니다.</p>
+      </div>
+      <div class="security-badges">
+        <div class="sec-tag">✓ 외부 서버 데이터 전송 0건</div>
+        <div class="sec-tag">✓ 서드파티 추적기(Tracker) 미탑재</div>
+        <div class="sec-tag">✓ 앱 삭제 시 즉시 영구 파기</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h4>Circle Timer</h4>
+        <p>Smart Screen-Time Banking & Moderation</p>
+      </div>
+      <div class="footer-links">
+        <h4>법적 고지 및 정책</h4>
+        <a href="privacy.html">개인정보처리방침 (Privacy Policy)</a>
+      </div>
+      <div class="footer-links">
+        <h4>문의처</h4>
+        <a href="mailto:support@circletimer.app">support@circletimer.app</a>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2026 Circle Timer. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
