@@ -190,6 +190,7 @@
       <h2>1. 개인정보 및 권한의 처리 목적과 범위</h2>
       <p>본 앱은 '시간 저축 기반의 타이머 충전' 및 '사용자가 지정한 목표 앱 사용 시간 제어/차단'이라는 핵심 기능을 제공하기 위해 아래의 단말기 권한 및 데이터에 접근합니다:</p>
       <ul>
+        <li><strong>신체 활동 인식 및 건강 데이터 (<code>ACTIVITY_RECOGNITION</code>, <code>android.permission.health.READ_STEPS</code>)</strong>: 스마트폰 하드웨어 센서 및 Google Health Connect로부터 일일 걸음 수(Steps) 데이터를 읽어와, 이용자가 걸은 걸음 수에 비례하여 목표 앱 사용 시간을 적립/충전(시간 저축)하는 보상 기능을 제공합니다.</li>
         <li><strong>설치된 애플리케이션 목록 (<code>QUERY_ALL_PACKAGES</code>)</strong>: 이용자가 사용 시간을 제한하고 차단하고자 하는 대상 앱을 직접 목록에서 선택 및 등록할 수 있도록 기기에 설치된 앱 정보를 로컬에서 표시합니다.</li>
         <li><strong>사용 정보 접근 권한 (<code>PACKAGE_USAGE_STATS</code>)</strong>: 이용자가 등록한 차단 대상 앱이 현재 화면(Foreground)에서 실행 중인지 실시간으로 감지하여, 적립된 시간을 정확히 차감하고 만료 시 차단하기 위해 사용됩니다.</li>
         <li><strong>다른 앱 위에 표시 권한 (<code>SYSTEM_ALERT_WINDOW</code>)</strong>: 적립된 잔여 시간이 0초로 소진되었을 때, 해당 차단 앱 위에 안전한 차단 오버레이 다이얼로그를 표시하여 추가 사용을 방지합니다.</li>
@@ -197,21 +198,31 @@
         <li><strong>배터리 최적화 제외 (<code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code>)</strong>: 스마트폰의 절전 모드로 인해 백그라운드 타이머 및 앱 감지 서비스가 비정상적으로 종료되는 현상을 방지합니다.</li>
       </ul>
 
+      <h2>2. 건강 데이터(Health Data) 및 Google Health Connect 정책 준수 선언</h2>
+      <p>본 앱은 Google Play의 <strong>건강 데이터 정책(Health Data Policy)</strong> 및 <strong>Health Connect 권한 정책</strong>을 엄격히 준수합니다:</p>
+      <ul>
+        <li><strong>접근하는 건강 데이터</strong>: 걸음 수(Daily Steps count) 데이터 (<code>READ_STEPS</code>)</li>
+        <li><strong>이용 목적</strong>: 이용자의 일일 걸음 수에 비례하여 차단 앱 사용 타이머 시간을 충전 및 저축해 주는 도파민 디톡스 건강 증진 보상 기능에만 한정하여 사용됩니다.</li>
+        <li><strong>완전한 온디바이스 처리</strong>: Health Connect 및 센서로부터 읽어온 걸음 수 데이터는 <strong>오직 이용자의 기기 내부(On-Device)에서만 실시간 계산 및 로컬 저장</strong>되며, 개발자의 자체 서버나 외부 클라우드로 일체 전송되지 않습니다.</li>
+        <li><strong>제3자 공유 및 타겟 광고 금지</strong>: 본 앱은 Google Health Connect를 통해 취득한 건강 데이터를 광고 플랫폼, 데이터 브로커, 정보 리셀러 등 <strong>어떠한 제3자에게도 판매, 대여, 공유하지 않으며, 맞춤형 광고나 프로파일링에 결코 활용하지 않습니다.</strong></li>
+        <li><strong>권한 철회 및 데이터 삭제</strong>: 이용자는 기기 '설정 &gt; 보안 및 개인정보 보호 &gt; 개인정보 보호 &gt; Health Connect' 또는 앱 내 권한 관리 화면에서 언제든지 건강 데이터 접근 권한을 철회할 수 있습니다. 앱을 삭제하거나 데이터를 초기화할 경우 기기 내에 저장된 모든 걸음 수 연동 기록은 영구적으로 파기됩니다.</li>
+      </ul>
+
       <div class="highlight-box">
         <p><strong>★ 핵심 보안 원칙: 완전한 온디바이스(On-Device) 로컬 처리</strong><br>
-        본 앱이 접근하는 모든 앱 사용 기록, 패키지 정보, 타이머 잔액 데이터는 <strong>이용자의 기기 내부(Local Device Storage)에서만 안전하게 처리</strong>됩니다. 자체 서버나 외부 클라우드로 어떠한 개인 식별 정보나 앱 사용 로그도 전송, 수집, 저장하지 않습니다.</p>
+        본 앱이 접근하는 모든 앱 사용 기록, 건강 데이터(걸음 수), 패키지 정보, 타이머 잔액 데이터는 <strong>이용자의 기기 내부(Local Device Storage)에서만 안전하게 처리</strong>됩니다. 자체 서버나 외부 클라우드로 어떠한 개인 식별 정보나 건강/앱 사용 로그도 전송, 수집, 저장하지 않습니다.</p>
       </div>
 
-      <h2>2. 제3자 제공 및 위탁</h2>
+      <h2>3. 제3자 제공 및 위탁</h2>
       <p>본 앱은 이용자의 개인정보를 제3자에게 판매, 대여, 공유하거나 외부 업체에 처리를 위탁하지 않습니다. 또한 이용자의 행태를 추적하거나 프로파일링하는 서드파티 분석 툴 및 광고 네트워크 SDK를 일체 탑재하지 않습니다.</p>
 
-      <h2>3. 개인정보의 보유 및 파기</h2>
-      <p>앱에서 사용하는 모든 설정 값(차단 앱 목록, 시간 잔액)은 이용자의 단말기 내부 저장소에만 보관됩니다. 이용자가 스마트폰에서 <strong>앱을 삭제(제거)하거나 '데이터 삭제'를 실행할 경우, 기기 내에 저장된 모든 데이터는 즉시 복구 불가능하게 영구 파기</strong>됩니다.</p>
+      <h2>4. 개인정보의 보유 및 파기</h2>
+      <p>앱에서 사용하는 모든 설정 값(차단 앱 목록, 시간 잔액, 걸음 수 연동 데이터)은 이용자의 단말기 내부 저장소에만 보관됩니다. 이용자가 스마트폰에서 <strong>앱을 삭제(제거)하거나 '데이터 삭제'를 실행할 경우, 기기 내에 저장된 모든 데이터는 즉시 복구 불가능하게 영구 파기</strong>됩니다.</p>
 
-      <h2>4. 아동의 개인정보 보호 (COPPA 준수)</h2>
+      <h2>5. 아동의 개인정보 보호 (COPPA 준수)</h2>
       <p>본 앱은 만 13세 미만(또는 관할 지역의 법정 연령 미만)의 아동을 대상으로 하지 않으며, 아동으로부터 의도적으로 어떠한 개인 식별 정보도 수집하지 않습니다.</p>
 
-      <h2>5. 문의처</h2>
+      <h2>6. 문의처</h2>
       <p>본 개인정보처리방침 또는 앱의 데이터 처리에 관하여 질문, 의견이 있으신 경우 아래 공식 연락처로 문의해 주시기 바랍니다:</p>
       <ul>
         <li><strong>서비스명</strong>: Circle Timer</li>
@@ -222,11 +233,12 @@
     <!-- English Section -->
     <div id="section-en" class="card" style="display: none;">
       <span class="badge">Google Play Policy & COPPA Compliant</span>
-      <p>Circle Timer (the "App") values user privacy and adheres strictly to applicable data protection regulations and the Google Play User Data Policy. This Privacy Policy details how we handle permissions and data within the App.</p>
+      <p>Circle Timer (the "App") values user privacy and adheres strictly to applicable data protection regulations, Google Play User Data Policy, and Google Play Health Data Policy. This Privacy Policy details how we handle permissions and data within the App.</p>
 
       <h2>1. Information and Permissions We Access</h2>
-      <p>The App accesses specific device capabilities strictly to fulfill its core functionality: time-banking productivity timers and user-defined app usage moderation:</p>
+      <p>The App accesses specific device capabilities strictly to fulfill its core functionality: time-banking productivity timers, healthy habit rewards, and user-defined app usage moderation:</p>
       <ul>
+        <li><strong>Physical Activity & Health Data (<code>ACTIVITY_RECOGNITION</code>, <code>android.permission.health.READ_STEPS</code>)</strong>: Reads daily step count data from device hardware sensors and Google Health Connect to reward users by crediting and banking app usage time in proportion to physical steps walked.</li>
         <li><strong>Installed Applications (<code>QUERY_ALL_PACKAGES</code>)</strong>: Displays installed applications locally so users can deliberately select and register which apps they wish to monitor and block.</li>
         <li><strong>Usage Access (<code>PACKAGE_USAGE_STATS</code>)</strong>: Detects in real-time when a user-managed target app enters the foreground, enabling second-by-second time deduction and triggering blocking upon expiration.</li>
         <li><strong>Display Over Other Apps (<code>SYSTEM_ALERT_WINDOW</code>)</strong>: Renders a protective overlay blocking dialog on top of managed apps when remaining banked time reaches zero.</li>
@@ -234,21 +246,31 @@
         <li><strong>Battery Optimization Exemption (<code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code>)</strong>: Prevents operating system battery savers from prematurely stopping background timer monitoring.</li>
       </ul>
 
+      <h2>2. Health Data & Google Health Connect Policy Compliance</h2>
+      <p>The App strictly complies with Google Play's <strong>Health Data Policy</strong> and <strong>Health Connect Permissions Policy</strong>:</p>
+      <ul>
+        <li><strong>Accessed Health Data</strong>: Daily step count records (<code>READ_STEPS</code>).</li>
+        <li><strong>Purpose of Use</strong>: Exclusively used for the in-app health incentive mechanism that converts walked steps into banked screen time for managed apps (dopamine detox motivation).</li>
+        <li><strong>Strict On-Device Processing</strong>: All health and step data retrieved from Google Health Connect or hardware sensors is <strong>processed and stored 100% locally on your device</strong>. It is never transmitted to any external server or cloud service.</li>
+        <li><strong>No Third-Party Sharing or Advertising</strong>: The App never sells, rents, licenses, or shares Health Connect data with third-party advertising platforms, data brokers, or information resellers under any circumstances, and does not use health data for interest-based or personalized advertising.</li>
+        <li><strong>Data Revocation & Deletion</strong>: Users can revoke step data permissions at any time via Android system settings (Settings &gt; Security &amp; privacy &gt; Privacy &gt; Health Connect) or within the App settings. All local health records are permanently destroyed when the user uninstalls the App or clears app storage.</li>
+      </ul>
+
       <div class="highlight-box">
         <p><strong>★ Absolute On-Device Processing Principle</strong><br>
-        All application usage metrics, package names, and banked second counters are <strong>processed and stored 100% locally on your device</strong>. The App does NOT transmit, collect, or store any personal data or usage logs to any external server or cloud service.</p>
+        All application usage metrics, health data (steps), package names, and banked second counters are <strong>processed and stored 100% locally on your device</strong>. The App does NOT transmit, collect, or store any personal data or usage logs to any external server or cloud service.</p>
       </div>
 
-      <h2>2. Third-Party Sharing and Tracking</h2>
+      <h2>3. Third-Party Sharing and Tracking</h2>
       <p>The App does not sell, rent, license, or share any user data with third parties. No third-party behavioral analytics, trackers, or advertising networks are integrated into the App.</p>
 
-      <h2>3. Data Retention and Deletion</h2>
+      <h2>4. Data Retention and Deletion</h2>
       <p>All user configurations reside strictly within the device's protected app sandbox. When the user uninstalls the App or clears app data through Android system settings, all stored data is <strong>immediately and permanently erased</strong>.</p>
 
-      <h2>4. Children's Privacy (COPPA Compliance)</h2>
+      <h2>5. Children's Privacy (COPPA Compliance)</h2>
       <p>The App is not directed to children under 13 years of age, and we do not knowingly collect personal data from children.</p>
 
-      <h2>5. Contact Information</h2>
+      <h2>6. Contact Information</h2>
       <p>If you have any questions or feedback regarding this Privacy Policy, please reach out to:</p>
       <ul>
         <li><strong>Service</strong>: Circle Timer</li>
