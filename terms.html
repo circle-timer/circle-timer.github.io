@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>서비스 이용약관 (Terms of Service) - Circle Timer</title>
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --accent: #38bdf8;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding-bottom: 60px;
+    }
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+    .brand img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+    .lang-switcher {
+      display: flex;
+      gap: 8px;
+    }
+    .lang-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .lang-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+      font-weight: 600;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+      padding: 0 20px;
+    }
+    .hero-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .hero-title h1 {
+      font-size: 2.2rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .hero-title p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-top: 24px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    h2:first-of-type {
+      margin-top: 0;
+    }
+    p, ul, ol {
+      margin-bottom: 16px;
+      color: #cbd5e1;
+    }
+    ul, ol {
+      padding-left: 24px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    strong {
+      color: #fff;
+    }
+    .highlight-box {
+      background: rgba(56, 189, 248, 0.08);
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+    }
+    .highlight-box p {
+      margin-bottom: 0;
+      color: #e0f2fe;
+    }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="brand">
+        <img src="assets/icon.png" alt="Circle Timer Logo">
+        <span>Circle Timer</span>
+      </a>
+      <div class="lang-switcher">
+        <button id="btn-ko" class="lang-btn active" onclick="switchLang('ko')">한국어</button>
+        <button id="btn-en" class="lang-btn" onclick="switchLang('en')">English</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-title">
+      <h1 id="title-text">서비스 이용약관 (Terms of Service)</h1>
+      <p id="date-text">시행일자 (Effective Date): 2026년 9월 15일</p>
+    </div>
+
+    <!-- 한국어 섹션 -->
+    <div id="section-ko" class="card">
+      <span class="badge">Google Play 정책 준수</span>
+      <p>본 약관은 Circle Timer(이하 '서비스' 또는 '앱')의 이용과 관련하여 개발자와 이용자 간의 권리, 의무, 책임사항 및 기본 이용 조건을 규정함을 목적으로 합니다.</p>
+
+      <h2>제1조 (목적 및 서비스 내용)</h2>
+      <p>Circle Timer는 사용자의 생산성 향상, 건강한 스마트폰 사용 습관 형성 및 디지털 디톡스를 돕기 위해 시간을 저축(Time Banking)하고 특정 애플리케이션의 사용 시간을 조절·관리하는 온디바이스 유틸리티 애플리케이션입니다.</p>
+      <ul>
+        <li><strong>시간 저축 (포커스 타이머 & 걸음 수 연동)</strong>: 스톱워치를 통한 집중 시간 측정 또는 신체 활동(걸음 수)에 비례하여 자유 이용 시간을 적립합니다.</li>
+        <li><strong>관리 앱 제어 및 차단</strong>: 사용자가 지정한 관리 앱 사용 시 적립된 시간을 실시간 차감하며, 잔여 시간이 소진되면 오버레이 화면을 통해 앱 사용을 안전하게 제한합니다.</li>
+      </ul>
+
+      <h2>제2조 (이용자의 의무 및 앱 권한)</h2>
+      <p>1. 이용자는 건전한 학습, 집중 및 생활 습관 개선을 위해 본 서비스를 이용하여야 합니다.</p>
+      <p>2. 서비스의 원활한 동작을 위해 Android 운영체제에서 요구하는 다음 권한의 허용이 필요합니다:</p>
+      <ul>
+        <li><strong>사용 정보 접근 권한 (PACKAGE_USAGE_STATS)</strong>: 관리 대상 앱의 실행 여부를 기기 내부에서 실시간 감지하기 위함.</li>
+        <li><strong>다른 앱 위에 표시 권한 (SYSTEM_ALERT_WINDOW)</strong>: 잔여 시간 만료 시 차단 화면을 표시하기 위함.</li>
+        <li><strong>배터리 최적화 제외 권한</strong>: 안드로이드 절전 모드로 인한 백그라운드 타이머 비정상 종료 방지.</li>
+      </ul>
+      <p>3. 이용자가 해당 권한을 해제하거나 기기 제조사의 특수한 절전 기능이 적용될 경우 서비스 기능의 일부 또는 전부가 정상 동작하지 않을 수 있습니다.</p>
+
+      <h2>제3조 (유료 결제 및 환불 규정)</h2>
+      <p>1. Circle Timer의 프리미엄(Pro) 기능은 Google Play 인앱 결제(In-App Billing) 시스템을 통해 안전하게 구매할 수 있습니다.</p>
+      <p>2. 유료 결제 건에 대한 청약철회 및 환불은 <strong>Google Play 환불 정책(Google Play Refund Policy)</strong> 및 전자상거래 등에서의 소비자보호에 관한 법률을 준수합니다.</p>
+      <p>3. 기기 변경 또는 재설치 시 동일한 Google 계정으로 로그인되어 있다면 '구매 복원(Restore Purchase)'을 통해 영구적으로 혜택을 유지할 수 있습니다.</p>
+
+      <h2>제4조 (면책 조항 및 서비스의 한계)</h2>
+      <p>1. 본 서비스는 이용자의 자발적인 시간 관리 및 디지털 디톡스를 보조하는 도구입니다. 기기 환경, 백그라운드 프로세스 강제 종료, OS 정책 변경 등으로 인한 차단 지연, 알림 누락 등에 대해 개발자는 고의 또는 중과실이 없는 한 법적 책임을 지지 않습니다.</p>
+      <p>2. 긴급 전화, 112/119 긴급 통신, 기본 시스템 설정 등 안전과 관련된 핵심 기능은 Circle Timer의 차단 대상에 포함되지 않습니다.</p>
+
+      <h2>제5조 (지적재산권)</h2>
+      <p>Circle Timer 애플리케이션의 디자인, 상표, 소스코드 및 관련 콘텐츠에 대한 모든 지적재산권은 개발자에게 귀속되며, 사전 동의 없이 무단 복제, 배포, 리버스 엔지니어링을 할 수 없습니다.</p>
+
+      <h2>제6조 (약관의 개정 및 고지)</h2>
+      <p>개발자는 관련 법령을 위배하지 않는 범위 내에서 본 약관을 개정할 수 있으며, 중요한 변경 사항이 발생할 경우 웹사이트 또는 앱 공지를 통해 사전 안내합니다.</p>
+
+      <h2>제7조 (문의처)</h2>
+      <p>서비스 이용약관 및 앱 이용과 관련하여 궁금하신 점은 아래 공식 이메일로 문의해 주시기 바랍니다:</p>
+      <ul>
+        <li><strong>서비스명</strong>: Circle Timer</li>
+        <li><strong>공식 문의 이메일</strong>: <a href="mailto:circletimer.app@gmail.com" style="color:var(--accent);">circletimer.app@gmail.com</a></li>
+      </ul>
+    </div>
+
+    <!-- English Section -->
+    <div id="section-en" class="card" style="display: none;">
+      <span class="badge">Google Play Policy Compliant</span>
+      <p>These Terms of Service ("Terms") govern your use of Circle Timer (the "App" or "Service"). By downloading, installing, or using the App, you agree to be bound by these Terms.</p>
+
+      <h2>1. Purpose and Service Overview</h2>
+      <p>Circle Timer is an on-device digital wellbeing and productivity utility designed to help users establish healthy smartphone habits through time banking and mindful screen-time moderation.</p>
+      <ul>
+        <li><strong>Time Banking</strong>: Earn screen-time credits by focusing with the visual stopwatch or walking daily steps.</li>
+        <li><strong>Mindful App Moderation</strong>: Real-time second-by-second countdown while using designated apps, with gentle blocking overlays upon time expiration.</li>
+      </ul>
+
+      <h2>2. User Responsibilities & System Permissions</h2>
+      <p>1. You agree to use the App solely for constructive productivity, learning, and habit improvement.</p>
+      <p>2. To deliver its core functionalities, the App requires specific Android system permissions:</p>
+      <ul>
+        <li><strong>Usage Access (PACKAGE_USAGE_STATS)</strong>: Locally monitors foreground execution of registered managed apps.</li>
+        <li><strong>Display Over Other Apps (SYSTEM_ALERT_WINDOW)</strong>: Displays a gentle overlay blocker once banked time reaches zero.</li>
+        <li><strong>Battery Optimization Exemption</strong>: Prevents unexpected background termination by aggressive OS battery-saving mechanisms.</li>
+      </ul>
+      <p>3. Disabling these required permissions or OEM-specific aggressive battery kill policies may impair the App's functionality.</p>
+
+      <h2>3. In-App Purchases & Refunds</h2>
+      <p>1. Optional premium features (Circle Timer Pro) are securely processed via the official Google Play In-App Billing system.</p>
+      <p>2. Cancellations and refunds adhere strictly to the <strong>Google Play Refund Policy</strong> and applicable consumer protection laws.</p>
+      <p>3. If you switch or restore devices, lifetime Pro purchases can be restored seamlessly via Google Play using the original purchasing Google account.</p>
+
+      <h2>4. Disclaimer of Warranties & Limitation of Liability</h2>
+      <p>1. Circle Timer is provided as an assistive productivity tool. While we strive for absolute reliability, we do not warrant uninterrupted operation against aggressive device OS terminations or third-party interference.</p>
+      <p>2. Critical emergency calls, SMS, and essential system functions are never restricted by Circle Timer.</p>
+
+      <h2>5. Intellectual Property</h2>
+      <p>All rights, titles, and interests in and to Circle Timer (including UI designs, branding, and code) remain the exclusive property of the developer. Unauthorized duplication, reverse engineering, or redistribution is strictly prohibited.</p>
+
+      <h2>6. Modifications to Terms</h2>
+      <p>We may update these Terms from time to time to comply with legal regulations or platform policy adjustments. Updated versions will be published directly on this website.</p>
+
+      <h2>7. Contact Information</h2>
+      <p>For any questions or support regarding these Terms, please contact:</p>
+      <ul>
+        <li><strong>Application</strong>: Circle Timer</li>
+        <li><strong>Support Email</strong>: <a href="mailto:circletimer.app@gmail.com" style="color:var(--accent);">circletimer.app@gmail.com</a></li>
+      </ul>
+    </div>
+
+    <footer>
+      <p><a href="index.html">← Circle Timer 홈으로 이동 (Home)</a> | <a href="privacy.html">개인정보처리방침 (Privacy Policy)</a></p>
+      <p style="margin-top: 10px;">&copy; 2026 Circle Timer. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function switchLang(lang) {
+      const koSec = document.getElementById('section-ko');
+      const enSec = document.getElementById('section-en');
+      const btnKo = document.getElementById('btn-ko');
+      const btnEn = document.getElementById('btn-en');
+      const titleText = document.getElementById('title-text');
+      const dateText = document.getElementById('date-text');
+
+      if (lang === 'en') {
+        koSec.style.display = 'none';
+        enSec.style.display = 'block';
+        btnKo.classList.remove('active');
+        btnEn.classList.add('active');
+        titleText.textContent = 'Terms of Service';
+        dateText.textContent = 'Effective Date: September 15, 2026';
+      } else {
+        koSec.style.display = 'block';
+        enSec.style.display = 'none';
+        btnEn.classList.remove('active');
+        btnKo.classList.add('active');
+        titleText.textContent = '서비스 이용약관 (Terms of Service)';
+        dateText.textContent = '시행일자 (Effective Date): 2026년 9월 15일';
+      }
+    }
+  </script>
+</body>
+</html>
